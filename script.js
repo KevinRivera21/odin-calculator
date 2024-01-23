@@ -26,3 +26,7 @@ function divide (firstNumber, secondNumber) {
 }
 
 console.log(divide(0, 10));
+
+function operate (firstNumber, secondNumber, operator) {
+    
+}
