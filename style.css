@@ -1,0 +1,8 @@
+.body-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator-container {
+    display: flex;
+}
