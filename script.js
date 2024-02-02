@@ -3,6 +3,7 @@ let operator;
 let secondNumber;
 
 
+
 function add (firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 };
