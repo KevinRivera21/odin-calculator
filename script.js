@@ -4,22 +4,15 @@ let secondNumber;
 
 const display = document.querySelector(".display-container");
 
-let numbers = {};
-
 let numberButtons = document.querySelectorAll(".number-buttons");
 
-numberButtons.forEach(function(button) {
-    button.addEventListener('click', setButtonValue(button));
-})
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => updateDisplay(button));
+});
 
-function setButtonValue(button) {
+function updateDisplay(button) {
     let buttonValue = button.textContent;
-        numbers.firstNumber = button.textContent;
-        updateDisplay(buttonValue);
-}
-
-function updateDisplay(value) {
-    display.textContent += value;
+    display.textContent += buttonValue;
 }
 
 function add (firstNumber, secondNumber) {
