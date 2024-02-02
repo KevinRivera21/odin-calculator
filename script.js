@@ -2,7 +2,20 @@ let firstNumber;
 let operator;
 let secondNumber;
 
+const display = document.querySelector(".display-container");
 
+let numberButtons = document.querySelectorAll(".number-buttons");
+
+numberButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        let buttonValue = button.textContent;
+        updateDisplay(buttonValue);
+    })
+})
+
+function updateDisplay(value) {
+    display.textContent += value;
+}
 
 function add (firstNumber, secondNumber) {
     return firstNumber + secondNumber;
