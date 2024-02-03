@@ -1,13 +1,38 @@
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
+let storingFirstNumber = true;
 
 const display = document.querySelector(".display-container");
 
 let numberButtons = document.querySelectorAll(".number-buttons");
 
 numberButtons.forEach(button => {
-    button.addEventListener('click', () => updateDisplay(button));
+    button.addEventListener('click', () => {
+        // Check if the button is an operator
+        if (["+", "-", "/", "*", "="].includes(button.textContent)) {
+            if (button.textContent === "=") {
+                // Perform calculation
+                performCalculation();
+
+            } else if (operator === "") { // If no operator has been set yet
+                operator = button.textContent;
+                storingFirstNumber = false; // Start storing the second number
+                updateDisplay(button); // Optional: Update display if you want to show the operator
+            }
+        } else if (button.textContent === "AC") {
+            // Reset everything
+            resetCalculator();
+        } else {
+            // It's a number button
+            if (storingFirstNumber) {
+                storeFirstNumber(button);
+            } else {
+                storeSecondNumber(button);
+            }
+            updateDisplay(button);
+        }
+    });
 });
 
 function updateDisplay(button) {
@@ -15,29 +40,31 @@ function updateDisplay(button) {
     display.textContent += buttonValue;
 }
 
-function add (firstNumber, secondNumber) {
+function storeFirstNumber(button) {
+    firstNumber += button.textContent;
+    console.log("First number is: " + firstNumber);
+}
+
+function storeSecondNumber(button) {
+    secondNumber += button.textContent;
+    console.log("secondNumber is : " + secondNumber);
+}
+
+function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 };
 
-console.log(add(10, 10));
-
-function subtract (firstNumber, secondNumber) {
+function subtract(firstNumber, secondNumber) {
     return firstNumber - secondNumber;
 }
 
-console.log(subtract(5, 10));
-
-function multiply (firstNumber, secondNumber) {
+function multiply(firstNumber, secondNumber) {
     return firstNumber * secondNumber;
 }
 
-console.log(multiply(10, 10));
-
-function divide (firstNumber, secondNumber) {
+function divide(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
-
-console.log(divide(0, 10));
 
 function operate(firstNumber, secondNumber, operator) {
     switch (operator) {
@@ -52,12 +79,5 @@ function operate(firstNumber, secondNumber, operator) {
         default:
             return 'Invalid operator';
     }
-    
-}
 
-// Test cases for the operator function
-console.log("The sum of 10 and 5 is: " + operate(10, 5, '+')); // Expected output: 15
-console.log("The difference of 10 and 5 is: " + operate(10, 5, '-')); // Expected output: 5
-console.log("The product of 10 and 5 is: " + operate(10, 5, '*')); // Expected output: 50
-console.log("The division of 10 and 5 is: " + operate(10, 5, '/')); // Expected output: 2
-console.log(operate(10, 5, '%')); // Expected output: 'Invalid operator'
+}
