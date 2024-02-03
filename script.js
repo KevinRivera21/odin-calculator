@@ -34,6 +34,10 @@ numberButtons.forEach(button => {
         }
     });
 });
+function showResult(result) {
+    display.textContent = result;
+}
+
 
 function updateDisplay(button) {
     let buttonValue = button.textContent;
@@ -71,15 +75,19 @@ function operate(firstNumber, secondNumber, operator) {
     secondNumber = parseInt(secondNumber);
     switch (operator) {
         case '+':
+            showResult(add(firstNumber, secondNumber));
             console.log(add(firstNumber, secondNumber));
             break;
         case '-':
+            showResult(subtract(firstNumber, secondNumber));
             console.log(subtract(firstNumber, secondNumber));
             break;
         case '*':
+            showResult(multiply(firstNumber, secondNumber));
             console.log(multiply(firstNumber, secondNumber));
             break;
         case '/':
+            showResult(divide(firstNumber, secondNumber));
             console.log(divide(firstNumber, secondNumber));
             break;
         default:
