@@ -13,7 +13,7 @@ numberButtons.forEach(button => {
         if (["+", "-", "/", "*", "="].includes(button.textContent)) {
             if (button.textContent === "=") {
                 // Perform calculation
-                performCalculation();
+                operate(firstNumber, secondNumber, operator);
 
             } else if (operator === "") { // If no operator has been set yet
                 operator = button.textContent;
@@ -67,17 +67,23 @@ function divide(firstNumber, secondNumber) {
 }
 
 function operate(firstNumber, secondNumber, operator) {
+    firstNumber = parseInt(firstNumber);
+    secondNumber = parseInt(secondNumber);
     switch (operator) {
         case '+':
-            return firstNumber + secondNumber;
+            console.log(add(firstNumber, secondNumber));
+            break;
         case '-':
-            return firstNumber - secondNumber;
+            console.log(subtract(firstNumber, secondNumber));
+            break;
         case '*':
-            return firstNumber * secondNumber;
+            console.log(multiply(firstNumber, secondNumber));
+            break;
         case '/':
-            return firstNumber / secondNumber;
+            console.log(divide(firstNumber, secondNumber));
+            break;
         default:
-            return 'Invalid operator';
+            console.log('Invalid operator');
     }
 
 }
