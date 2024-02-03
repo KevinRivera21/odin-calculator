@@ -34,6 +34,15 @@ numberButtons.forEach(button => {
         }
     });
 });
+
+function resetCalculator() {
+    firstNumber = "";
+    operator = "";
+    secondNumber = "";
+    storingFirstNumber = true;
+    display.textContent = "";
+}
+
 function showResult(result) {
     display.textContent = result;
 }
