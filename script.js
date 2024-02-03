@@ -76,6 +76,9 @@ function multiply(firstNumber, secondNumber) {
 }
 
 function divide(firstNumber, secondNumber) {
+    if (secondNumber == 0) {
+        return "Division by zero is undefined"
+    }
     return firstNumber / secondNumber;
 }
 
