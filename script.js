@@ -57,8 +57,11 @@ function resetCalculator() {
 }
 
 function showResult(result) {
-    display.textContent = result;
+    
+    let roundedResult = Number(result.toFixed(2));
+    display.textContent = roundedResult;
 }
+
 
 
 function updateDisplay(button) {
