@@ -57,10 +57,16 @@ function resetCalculator() {
 }
 
 function showResult(result) {
-    
-    let roundedResult = Number(result.toFixed(2));
-    display.textContent = roundedResult;
+    if (typeof result === "number") {
+        let roundedResult = Number(result.toFixed(2));
+        display.textContent = roundedResult;
+        display.classList.remove('small-text'); // Ensure normal font size for numbers
+    } else {
+        display.textContent = result;
+        display.classList.add('small-text'); // Use smaller font size for text messages
+    }
 }
+
 
 
 

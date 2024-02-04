@@ -31,8 +31,7 @@ html, body {
     border-color: rgb(0, 0, 0);
     border-radius: 5px;
     text-align: right;
-    word-wrap: break-word;
-    word-break: break-all;
+    overflow-wrap: break-word;
     margin: 10px;
     height: 60px;
     background-color: white;
@@ -56,4 +55,8 @@ button {
     height: 70px;
     font-family: monospace;
     color: black;
+}
+
+.small-text {
+    font-size: 30px; /* Adjust based on needs */
 }
