@@ -2,6 +2,8 @@ let firstNumber = "";
 let operator = "";
 let secondNumber = "";
 let storingFirstNumber = true;
+let chainingOperations = false;
+let temporaryNewNumber = 0;
 
 const display = document.querySelector(".display-container");
 
@@ -16,6 +18,10 @@ numberButtons.forEach(button => {
                 operate(firstNumber, secondNumber, operator);
 
             } else if (operator === "") { // If no operator has been set yet
+                secondNumber = "";
+                console.log("AFTER PRESSING THE SECOND OPERATOR THE FIRSTNUMBER IS NOW"+firstNumber)
+                console.log(secondNumber);
+                console.log("first number is"+firstNumber);
                 operator = button.textContent;
                 storingFirstNumber = false; // Start storing the second number
                 updateDisplay(button); // Optional: Update display if you want to show the operator
@@ -25,9 +31,10 @@ numberButtons.forEach(button => {
             resetCalculator();
         } else {
             // It's a number button
-            if (storingFirstNumber) {
+            if (storingFirstNumber && !chainingOperations) {
                 storeFirstNumber(button);
             } else {
+
                 storeSecondNumber(button);
             }
             updateDisplay(button);
@@ -64,46 +71,56 @@ function storeSecondNumber(button) {
 }
 
 function add(firstNumber, secondNumber) {
+    operator = "";
     return firstNumber + secondNumber;
 };
 
 function subtract(firstNumber, secondNumber) {
+    operator = "";
     return firstNumber - secondNumber;
 }
 
 function multiply(firstNumber, secondNumber) {
+    operator = "";
     return firstNumber * secondNumber;
 }
 
 function divide(firstNumber, secondNumber) {
+    operator = "";
     if (secondNumber == 0) {
         return "Division by zero is undefined"
     }
     return firstNumber / secondNumber;
 }
 
-function operate(firstNumber, secondNumber, operator) {
-    firstNumber = parseInt(firstNumber);
-    secondNumber = parseInt(secondNumber);
+function operate(firstNumb, secondNumb, operator) {
+    firstNumber = parseInt(firstNumb);
+    secondNumber = parseInt(secondNumb);
+    
     switch (operator) {
         case '+':
-            showResult(add(firstNumber, secondNumber));
-            console.log(add(firstNumber, secondNumber));
+            result = add(firstNumber, secondNumber);
             break;
         case '-':
-            showResult(subtract(firstNumber, secondNumber));
-            console.log(subtract(firstNumber, secondNumber));
+            result = subtract(firstNumber, secondNumber);
             break;
         case '*':
-            showResult(multiply(firstNumber, secondNumber));
-            console.log(multiply(firstNumber, secondNumber));
+            result = multiply(firstNumber, secondNumber);
             break;
         case '/':
-            showResult(divide(firstNumber, secondNumber));
-            console.log(divide(firstNumber, secondNumber));
+            result = divide(firstNumber, secondNumber);
             break;
         default:
             console.log('Invalid operator');
+            return;
     }
 
+    // Show and use the result for the next operation
+    showResult(result);
+    console.log(result);
+    firstNumber = result;
+    console.log("THE FIRST NUMBER IS NOW" + firstNumber);
+    
+    
+    
 }
