@@ -126,7 +126,5 @@ function operate(firstNumb, secondNumb, operator) {
     console.log(result);
     firstNumber = result;
     console.log("THE FIRST NUMBER IS NOW" + firstNumber);
-    
-    
-    
+     
 }
