@@ -16,16 +16,44 @@ html, body {
     flex-direction: column;
     border-style: solid;
     border-radius: 5px;
-    border-color: blueviolet;
-    height: 500px;
-    justify-content: center;
+    border-color: rgb(0, 0, 0);
+    height: 620px;
+    width: 400px;
+
+    background-color: rgb(179, 159, 159);
+    flex-shrink: 0;
 }
 
 .display-container {
-    text-align: end;
-    padding: 10px;
+    font-size: 50px;
+    padding: 10px 20px;
+    border: solid;
+    border-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin: 10px;
+    height: 60px;
+    background-color: white;
 }
 
 .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    
+}
 
+button {
+    border-radius: 5%;
+    font-weight: initial;
+    font-size: 50px;
+    width: 100px;
+    height: 70px;
+    font-family: monospace;
+    color: black;
 }
