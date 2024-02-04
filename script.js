@@ -4,6 +4,7 @@ let secondNumber = "";
 let storingFirstNumber = true;
 let chainingOperations = false;
 let temporaryNewNumber = 0;
+let operatorJustPressed = false;
 
 const display = document.querySelector(".display-container");
 
@@ -13,11 +14,16 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         // Check if the button is an operator
         if (["+", "-", "/", "*", "="].includes(button.textContent)) {
-            if (button.textContent === "=") {
+            if (secondNumber !== "" && operator !== "" && !operatorJustPressed) {
+                updateDisplay(button);
+                operate(firstNumber, secondNumber, operator);
+            }
+
+            if (button.textContent === "=" && firstNumber) {
                 // Perform calculation
                 operate(firstNumber, secondNumber, operator);
 
-            } else if (operator === "") { // If no operator has been set yet
+            } else if (operator === "" && button.textContent !== "=") { // If no operator has been set yet
                 secondNumber = "";
                 console.log("AFTER PRESSING THE SECOND OPERATOR THE FIRSTNUMBER IS NOW"+firstNumber)
                 console.log(secondNumber);
