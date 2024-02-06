@@ -24,3 +24,7 @@ The calculator logic is straightforward. Users click buttons to input numbers an
 ## Conclusion
 
 This calculator project showcases essential web development skills, including creating an interactive user interface, styling with CSS for visual appeal, and implementing functional logic with JavaScript. It's a practical example of how different web technologies come together to create useful applications.
+
+### Live Preview
+
+https://kevinrivera21.github.io/odin-calculator/
